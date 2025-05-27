@@ -1,0 +1,12 @@
+<div *ngIf="userProp">
+    <div class="user-card">
+        <img src="{{userProp.avatar}}" alt="User Avatar" class="avatar" />
+        <div class="user-info">
+            <a routerLink="/user/{{userProp.id}}">
+                <h2 class=" name">{{ userProp.first_name }} {{ userProp.last_name }}</h2>
+            </a>
+            <p class="email">{{ userProp.email }}</p>
+            <button mat-mini-fab (click)="delete()"><mat-icon>delete</mat-icon></button>
+        </div>
+    </div>
+</div>

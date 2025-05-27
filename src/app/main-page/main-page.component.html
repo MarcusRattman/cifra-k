@@ -1,0 +1,51 @@
+<div class="main-view grid grid-2-columns">
+    @if (resourcesResponse$ | async; as resources) {
+    <div class="flex flex-wrap justify-center">
+        <div *ngFor="let res of resources.data">
+            <app-resorce-card [resourceProp]="res" />
+        </div>
+    </div>
+    } @else {
+    <div class="flex flex-wrap justify-center">
+        @for (item of [].constructor(6); track $index) {
+        <app-resorce-card />
+        }
+    </div>
+    }
+
+    @if (usersResponse$ | async; as users) {
+    <div class="flex flex-wrap justify-center">
+        <div *ngFor="let user of users.data">
+            <app-user-card-component [userProp]="user" />
+        </div>
+    </div>
+    } @else {
+    <div class="flex flex-wrap justify-center">
+        @for (item of [].constructor(6); track $index) {
+        <app-user-card-component />
+        }
+    </div>
+    }
+</div>
+
+<div class="res-buttons absolute flex flex-row gap1">
+    <button mat-fab (click)="prevRes()">
+        <mat-icon fontIcon="arrow_back" />
+    </button>
+    <button mat-fab (click)="nextRes()">
+        <mat-icon fontIcon="arrow_forward" />
+    </button>
+</div>
+
+<div class="usr-buttons absolute flex flex-row gap1">
+    <button mat-fab (click)="prevUsers()">
+        <mat-icon fontIcon="arrow_back" />
+    </button>
+    <button mat-fab (click)="nextUsers()">
+        <mat-icon fontIcon="arrow_forward" />
+    </button>
+</div>
+
+<div class="progress-bar absolute" *ngIf="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>

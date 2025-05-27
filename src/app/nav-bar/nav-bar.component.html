@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <div class="navbar-brand">
+        <a routerLink="">
+            Home
+        </a>
+    </div>
+
+    <div class="auth-options">
+        <button *ngIf="!isAuthenticated" mat-flat-button (click)="login()">Auth</button>
+        <button *ngIf="isAuthenticated" mat-flat-button (click)="logout()">Logout</button>
+    </div>
+</nav>
